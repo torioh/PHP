@@ -131,4 +131,23 @@ class Lib {
 
         return $array;
     }
+
+    /**
+    * 文字列よりipadress部分を抽出する
+    * 例: for=10.10.1.20　==> 10.10.1.20
+    * @param string
+    * @return string
+    */
+    public static function getPureIpAdress($ipadress) {
+        if (!$ipadress) {
+            return;
+        }
+
+        $cnt = preg_match('/([1-9]{1}[0-9]{0,2})\.([1-9]{1}[0-9]{0,3})\.([1-9]{1}[0-9]{0,3})\.([1-9]{1}[0-9]{0,3})/', $ipadress, $match);
+        if(!$cnt) {
+            return;
+        }
+
+        return $match[0];
+    }
 }
